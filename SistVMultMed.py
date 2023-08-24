@@ -1,4 +1,4 @@
-import datatime
+import datetime
 class Medicamento:
     def __init__(self):
         self.__nombre = "" 
@@ -112,13 +112,21 @@ def main():
                 tipo=input("Ingrese el tipo de mascota (felino o canino): ")
                 peso=int(input("Ingrese el peso de la mascota: "))
 
-                while True: 
-                    fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
-                    if len(fecha) == 10 and fecha[2] == "/" and fecha[5] == "/":
+                while True:
+                    try:
+                        dia = int(input("Ingrese el día: "))
+                        mes = int(input("Ingrese el mes: "))
+                        año = int(input("Ingrese el año: "))
+                        
+                        # Verificar si la fecha es válida
+                        fecha_ingresada = datetime.date(año, mes, dia)
+                        
+                        print("Fecha válida:", fecha_ingresada.strftime("%d/%m/%Y"))
                         break
-                    else:
-                        print("Formato de fecha incorrecto. Use dd/mm/aaaa.")
+                    except ValueError:
+                        print("Fecha inválida. Ingrese una fecha válida.")
                         continue
+                    
                 nm=int(input("Ingrese cantidad de medicamentos: "))
                 lista_med=[]
 
