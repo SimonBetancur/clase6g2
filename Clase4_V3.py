@@ -1,3 +1,5 @@
+#A VER
+
 class Paciente:
     def __init__(self):
         self.__nombre = '' 
